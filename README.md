@@ -9,8 +9,20 @@ YAMAHAシリーズ（主にルーター）の備忘録兼のドキュメント�
 主にRTX1200。VoIPルーターとしてNVR500とかも連携してみたい。  
 WLX320も使ってみたいけど金欠だし、バグが多いらしいのでどうなんだろ。様子見？
 
+シリアルコンソールケーブルはクロスの  
+[Amazon.co.jp： iBUFFALO USBシリアルケーブル(USBtypeA to D-sub9ピン)1.0m ブラックスケルトン BSUSRC0610BS: パソコン・周辺機器](http://www.amazon.co.jp/iBUFFALO-USB%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%B1%E3%83%BC%E3%83%96%E3%83%AB-USBtypeA-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF%E3%82%B9%E3%82%B1%E3%83%AB%E3%83%88%E3%83%B3-BSUSRC0610BS/dp/B007SI18VW)  
+がおすすめ。
+
 よく使う操作のチートシート
 ----------------------------------
+
+### 文字コードをASCIIにセット
+
+SJISはMacやLinux端末では文字化けしやすいのでASCIIにセットする。
+
+```
+console character ascii
+```
 
 ### 設定をUSBにバックアップ・リストアする
 
@@ -43,6 +55,18 @@ cold start
 copy exec usb1:/rtx1200.bin 0
 restart
 ```
+
+screenコマンド
+----------------------------------
+
+* 接続
+
+```
+screen /dev/tty.usbserial-FTGNW2EB
+```
+
+* コマンドモード遷移: `Ctrl + a`
+* 終了: `:quit`
 
 リンク集
 ----------------------------------
