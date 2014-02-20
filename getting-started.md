@@ -106,3 +106,33 @@ Password:
 ```
 
 SSHが使用したいところだが、もう少し我慢。
+
+DHCPサーバーを有効化する
+------------------------
+
+```
+dhcp service server 
+dhcp server rfc2131 compliant except remain-silent 
+dhcp scope 1 192.168.0.2-192.168.0.199/24 
+```
+
+DNSリレーの設定
+----------------
+
+### 個別に指定するとき
+
+```
+dns server 8.8.8.8 8.8.4.4 
+dns private address spoof on
+```
+
+### ISPから自動取得する
+
+インターリンクは自動取得が推奨されている。
+
+```
+# PPPoE接続のpp1インタフェースの情報を使用する場合
+dns server pp 1
+# lan2インタフェースの情報を使用する場合
+dns server dhcp lan2
+```
