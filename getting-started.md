@@ -136,3 +136,33 @@ dns server pp 1
 # lan2インタフェースの情報を使用する場合
 dns server dhcp lan2
 ```
+
+### PPPoEの設定
+
+* `pp` インタフェースはipsecの場合はPPPoEの時のみ使用する。
+* PPTPを使用するときはこの限りではない。
+
+```
+pp select 1
+pppoe auto connect on
+pppoe auto disconnect off
+pppoe use lan2
+pp auth accept pap chap
+pp auth myname ユーザID パスワード
+pp always-on on
+ppp lcp mru on 1454
+ppp ccp type none
+ip pp address xxx.xxx.xxx.xxx/28
+ppp ipcp msext on
+ip pp mtu 1454
+ip pp nat descriptor 1
+pp enable 1
+ip route default gateway pp 1
+```
+
+#### `pp1` から抜け出したいとき。
+
+```
+pp1# pp select none
+#
+```
