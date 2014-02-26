@@ -160,9 +160,68 @@ pp enable 1
 ip route default gateway pp 1
 ```
 
+IPアドレスを動的に取得する環境の場合は
+
+```
+ip pp address xxx.xxx.xxx.xxx/28
+↓
+ip ipcp ipaddress on
+```
+
 #### `pp1` から抜け出したいとき。
 
 ```
 pp1# pp select none
 #
 ```
+
+インターネット接続はすぐに反映されないみたいなので
+
+```
+restart
+```
+
+#### インターネット接続試験
+
+まずは `pp` インタフェースの接続状況を確認しましょう。
+
+```
+# show status pp 1
+PP[01]:
+Description: 
+Current PPPoE session status is Connected.
+Access Concentrator: BAS
+1 minute 49 seconds  connection.
+Received: 14 packets [840 octets]  Load: 0.0%
+Transmitted: 13 packets [511 octets]  Load: 0.0%
+PPP Cofigure Options
+    LCP Local: Magic-Number MRU, Remote: CHAP Magic-Number MRU
+    IPCP Local: Primary-DNS(xxx.xxx.xxx.xxx) Secondary-DNS(xxx.xxx.xxx.xxx), Remo
+te: IP-Address
+    PP IP Address Local: xxx.xxx.xxx.xxx, Remote: xxx.xxx.xxx.xxx
+    CCP: None
+```
+
+pingを打ってみる。
+
+```
+# ping 8.8.8.8 
+received from 8.8.8.8: icmp_seq=1 ttl=47 time=56.253ms
+received from 8.8.8.8: icmp_seq=2 ttl=47 time=47.024ms
+received from 8.8.8.8: icmp_seq=3 ttl=47 time=50.333ms
+
+4 packets transmitted, 3 packets received, 25.0% packet loss
+round-trip min/avg/max = 47.024/51.203/56.253 ms
+```
+
+```
+# ping www.google.co.jp 
+received from nrt04s07-in-f24.1e100.net (173.194.126.216): icmp_seq=0 ttl=53 time=22.926ms
+received from nrt04s07-in-f24.1e100.net (173.194.126.216): icmp_seq=1 ttl=53 time=24.834ms
+received from nrt04s07-in-f24.1e100.net (173.194.126.216): icmp_seq=2 ttl=53 time=22.070ms
+
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max = 22.070/23.276/24.834 ms
+```
+
+当然ですが、この段階ではNATディスクリプタを記述していないのでRTX1200にぶら下がっている機器からはインターネットにpingを打つことはできません。
