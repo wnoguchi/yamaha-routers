@@ -225,3 +225,45 @@ round-trip min/avg/max = 22.070/23.276/24.834 ms
 ```
 
 当然ですが、この段階ではNATディスクリプタを記述していないのでRTX1200にぶら下がっている機器からはインターネットにpingを打つことはできません。
+
+### NATディスクリプタの設定
+
+PPPoE接続のときのお話。
+
+```
+nat descriptor type 1 masquerade
+nat descriptor address innter 1 192.168.0.1-192.168.0.254
+nat descriptor address outer 1 ipcp
+nat descriptor masquerade static 1 1 192.168.0.1 udp 500
+nat descriptor masquerade static 1 2 192.168.0.1 esp
+```
+
+以下はうまくいった
+
+```
+nat descriptor address outer 1 ipcp
+```
+
+以下うまくいかない
+
+```
+nat descriptor address outer 1 primary
+```
+
+以下を見ると明白だ。
+
+- [24.3 NAT 処理の外側 IP アドレスの設定](http://www.rtpro.yamaha.co.jp/RT/manual/rt-common/nat/nat_descriptor_address_outer.html)
+
+```
+nat descriptor address outer 1 primary
+```
+
+のコマンドを叩いた瞬間にpingが途切れる。  
+だからといってその場で
+
+```
+nat descriptor address outer 1 ipcp
+```
+
+に戻してもpingがもどらないので困った。  
+こういう時はRTX1200を再起動するか、いったんLANケーブルを抜いてまた差すといい。
