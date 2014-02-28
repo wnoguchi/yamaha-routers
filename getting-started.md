@@ -234,6 +234,7 @@ PPPoE接続のときのお話。
 nat descriptor type 1 masquerade
 nat descriptor address innter 1 192.168.0.1-192.168.0.254
 nat descriptor address outer 1 ipcp
+# 以下はIPsecに関する静的NATディスクリプタ
 nat descriptor masquerade static 1 1 192.168.0.1 udp 500
 nat descriptor masquerade static 1 2 192.168.0.1 esp
 ```
