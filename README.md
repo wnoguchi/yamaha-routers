@@ -87,3 +87,4 @@ screen /dev/tty.usbserial-FTGNW2EB
 
 - [Amazon.co.jp： ヤマハルータでつくるインターネットVPN ［第3版］: 井上孝司: 本](http://www.amazon.co.jp/%E3%83%A4%E3%83%9E%E3%83%8F%E3%83%AB%E3%83%BC%E3%82%BF%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8B%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%8D%E3%83%83%E3%83%88VPN-%EF%BC%BB%E7%AC%AC3%E7%89%88%EF%BC%BD-%E4%BA%95%E4%B8%8A%E5%AD%9D%E5%8F%B8/dp/4839937745/ref=sr_1_1?ie=UTF8&qid=1387725225&sr=8-1&keywords=VPN)
 - [Amazon.co.jp： ヤマハルーターで挑戦 企業ネットをじぶんで作ろう: 谷山 亮治, 日経NETWORK: 本](http://www.amazon.co.jp/%E3%83%A4%E3%83%9E%E3%83%8F%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC%E3%81%A7%E6%8C%91%E6%88%A6-%E4%BC%81%E6%A5%AD%E3%83%8D%E3%83%83%E3%83%88%E3%82%92%E3%81%98%E3%81%B6%E3%82%93%E3%81%A7%E4%BD%9C%E3%82%8D%E3%81%86-%E8%B0%B7%E5%B1%B1-%E4%BA%AE%E6%B2%BB/dp/4822267687/ref=sr_1_5?ie=UTF8&qid=1387725225&sr=8-5&keywords=VPN)
+- [YAMAHAルータ実機で学ぶ　＠network Cisco・アライド実機で学ぶ](http://atnetwork.info/yamaha/)
